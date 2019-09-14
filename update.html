@@ -1,0 +1,20 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="container col-md-6 offset-3" style="background-color:lightgrey">
+	<form action="{{url_for('editpost',post_id=post.id)}}" method="POST" class="m-5">
+	<div class="form-group">
+		<label for="title">
+			<h4>Name:</h4>
+		</label>
+		<input type="text" class="form-control" name="title" required="required" value="{{post.title}}">
+	</div>
+	<div class="form-group">
+		<label for="image">
+			<h4>Image Url:</h4>
+		</label>
+		<input type="text" class="form-control" name="image"  id="image" required="required" value="{{post.image}}">
+	</div>
+	<input type="submit" value="update" class="btn btn-primary btn-block">
+</form>
+</div>
+{% endblock %}

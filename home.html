@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-image:url('https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg')">
+<!...Navbar...!>
+<nav class="navbar navbar-expand-sm bg-danger navbar-danger">
+<!...brand logo...!>
+<a class="navbar-brand" href="{{url_for('home')}}">
+<img src="https://cdn.shopify.com/s/files/1/0257/6087/products/Pikachu_Single_Front_dc998741-c845-43a8-91c9-c1c97bec17a4.png?v=1523938908" alt="logo" style="width:80px;"></a>
+<!..links..!>
+<ul class="navbar-nav">
+	<li class="nav-item">
+		{%if 'email' in session%}
+		<a class="nav-link" href="{{url_for('newpost')}}"><h4>Newpost</h4></a>
+		{%endif%}
+	</li>
+</ul>
+<ul class="navbar-nav">
+	<li class="nav-item">
+		<a class="nav-link" href="{{url_for('register')}}"><h4>Register</h4></a>
+	</li>
+</ul>
+<ul class="navbar-nav">
+	<li class="nav-item">
+		{%if 'email' in session%}
+		<a class="nav-link" href="{{url_for('fileupload')}}"><h4>Fileupload</h4></a>
+		{%endif%}
+	</li>
+</ul>
+<ul class="navbar-nav">
+	<li class="nav-item">
+		{%if 'email' in session %}
+		<a class="nav-link" href="{{url_for('logout')}}">{{session['email']}}<h4>Logout</h4></a>
+		{%else%}
+		<a class="nav-link" href="{{url_for('login')}}"><h4>Login</h4></a>
+		{%endif%}
+	</li>
+</ul>
+</nav>
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category,message in messages %}
+<div class="alert alert-{{category}} alert-dismissible">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	{{message}}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+{% block content %}
+{% endblock %}
+</body>
+</html>

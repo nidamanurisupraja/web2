@@ -1,0 +1,16 @@
+{% extends "home.html" %}
+{%block content %}
+<div class="container col-md-4 offset-3 pt-5">
+	<div class="border bg-info">
+		<center>
+				<form action="/store" method="POST" enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="file" class='text-light'><h1>Upload file</h1></label>
+					<input type="file" class="form-control-file border" id="file" name="file" required="required">
+				</div>
+				<button type="submit" class="btn btn-danger">upload</button>
+			</form>
+		</center>
+	</div>
+</div>
+{% endblock %}

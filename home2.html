@@ -1,0 +1,20 @@
+{% extends 'home.html' %}
+{% block content %}
+<center><h1>ALLPOSTS</h1></center>
+<div class="container">
+<div class="card-deck">
+{%for post in posts%}
+<div style="display: flex; justify-content: space-around;">
+<div>
+
+<img src="{{post.image}}" height=250px, width=250px;>
+<h4>{{post.title}}</h4>
+<a href="{{url_for('editpost',post_id=post.id)}}" class="btn btn-primary">Edit</a>&nbsp,&nbsp
+<a href="{{url_for('deletepost',post_id=post.id)}}" class="btn btn-primary">Delete</a>
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+
+{% endblock %}
